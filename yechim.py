@@ -95,7 +95,7 @@ class Solution(Algorithm):
     def F5(self):
 
         def F(z: int):
-            boluvchilari_soni = self.count_divisors_optimized(z)
+            boluvchilari_soni = self.count_divisors_optimized(abs(z))
             if z > 0:
                 if boluvchilari_soni % 2 == 0:
                     return boluvchilari_soni
