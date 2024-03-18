@@ -3,6 +3,26 @@ import math
 
 class Algorithm:
 
+    def kabisa_yili(self, yil: int) -> bool:
+        """
+        Bu algoritm 'yil' parametri kabisa yili bo'lsa True, aks holda False
+        qaytaradi.
+
+        Parametr:
+            yil: int 
+
+        Return:
+            bool
+        """
+
+        if yil % 400 == 0:
+            return True
+        else:
+            if yil % 4 == 0 and yil % 100 != 0:
+                return True
+            else:
+                return False
+        
     def count_divisors(self, n):
         divisor_count = 0
         for i in range(1, n + 1):
@@ -110,8 +130,26 @@ class Solution(Algorithm):
         natija = F(z)
         print(natija)
 
+    def F6(self):
+        
+        # Input
+        yil = int(input())
+
+        # Function
+        def F(yil: int) -> str:
+            
+            if self.kabisa_yili(yil):
+                sana = 12
+            else:
+                sana = 13
+            return "{}/09/{:04d}".format(sana, yil)
+
+        # Output
+        natija = F(yil)
+        print(natija)
+
 if __name__ == "__main__":
 
     solution = Solution()
-    solution.F5()
+    solution.F6()
     pass
