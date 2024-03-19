@@ -148,8 +148,34 @@ class Solution(Algorithm):
         natija = F(yil)
         print(natija)
 
+    def F7():
+        pass
+
+    @staticmethod    
+    def F8():
+
+        # Input
+        nums = list(map(int, input().split()))
+
+        # Function
+        def F(nums: list) -> tuple:
+            summa = sum(nums)
+            max_ = 0
+            min_ = summa
+
+            for i in nums:
+                ayirma = summa - i
+                min_ = min(min_, ayirma)
+                max_ = max(max_, ayirma)
+            
+            return min_, max_
+
+        # Output
+        natija = F(nums)
+        print("{} {}".format(*natija))
+
+
 if __name__ == "__main__":
 
     solution = Solution()
-    solution.F6()
-    pass
+    solution.F8()
