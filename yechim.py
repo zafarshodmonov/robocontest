@@ -217,11 +217,29 @@ class Solution(Algorithm):
 
         # Output | Chiqish
         print(natija)
-    
 
+    @staticmethod
+    def F11():
+
+        # Algorithm | Algoritm
+        # Function | Funksiya
+        def F(nums: list):
+            nums.remove(max(nums))
+            return max(nums)
+
+        # Input | Kirish
+        N = int(input())
+        nums = list(map(int, input().split()))
+
+        # Processing | Ishlov Berish
+        natija = F(nums)
+
+        # Output | Chiqish
+        print(natija)
+        
 
 
 if __name__ == "__main__":
 
     solution = Solution()
-    solution.F10()
+    solution.F11()
