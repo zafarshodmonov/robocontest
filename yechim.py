@@ -174,8 +174,54 @@ class Solution(Algorithm):
         natija = F(nums)
         print("{} {}".format(*natija))
 
+    @staticmethod
+    def F9():
+        
+        def F(nums):
+            M = {}
+            for i in nums:
+                if i in M:
+                    del M[i]
+                else:
+                    M[i] = 1
+            return list(M)[0]
+        
+        # Input
+        N = int(input())
+        nums = list(map(int, input().split()))
+        
+        # Function
+        natija = F(nums)
+        
+        # Output
+        print(natija)
+    
+    @staticmethod
+    def F10():
+
+        # Algorithm | Algoritm
+        # Function | Funksiya
+        def F(n: int, nums: list) -> str:
+
+            if sum(nums) >= n:
+                return "Yes"
+            else:
+                return "No"
+            
+        # Input | Kirish
+        N = int(input())
+        nums = list(map(int, input().split()))
+
+        # Processing | Ishlov Berish
+        natija = F(N, nums)
+
+        # Output | Chiqish
+        print(natija)
+    
+
+
 
 if __name__ == "__main__":
 
     solution = Solution()
-    solution.F8()
+    solution.F10()
