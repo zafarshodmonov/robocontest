@@ -42,6 +42,24 @@ class Algorithm:
             divisor_count -= 1
         return divisor_count
 
+    def SieveOfEratosthenes(self, n):
+
+        prime = [True for i in range(n+1)]
+        p = 2
+        while (p * p <= n):
+
+            if (prime[p] == True):
+
+                for i in range(p * p, n+1, p):
+                    prime[i] = False
+            p += 1
+
+        rel = []
+        for p in range(2, n+1):
+            if prime[p]:
+                #print(p)
+                rel.append(p)
+        return rel
 
 class Solution(Algorithm):
 
@@ -236,10 +254,30 @@ class Solution(Algorithm):
 
         # Output | Chiqish
         print(natija)
+
+    def F12(self):
+
+        # Algorithm | Algoritm
+        # Function | Funksiya
+        def F(n: int) -> str:
+            tub = self.SieveOfEratosthenes(n)
+            if len(tub) % 2 == 0:
+                return "Bobur"
+            else:
+                return "Ali"
+
+        # Input | Kirish
+        N = int(input())
+
+        # Processing | Ishlov Berish
+        natija = F(N)
+
+        # Output | Chiqish
+        print(natija)
         
 
 
 if __name__ == "__main__":
 
     solution = Solution()
-    solution.F11()
+    solution.F12()
