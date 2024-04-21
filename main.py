@@ -3,6 +3,36 @@ import math
 
 class Algorithm:
 
+    def uchta_son_kattasi(self, a, b, c) -> int | tuple:
+        """
+        Bu algoritmning vazifasi berilgan 3 ta sonning eng kattasini qaytaradi.
+        Agar katta sonlar teng bo'lib qolsa hamma katta sonlarni qaytaradi. 
+        Agar birinchi son katta bo'lsa 1, ikkinchi son katta bo'lsa 2, uchunchi
+        son katta bo'lsa 3 qaytaradi. Agar katta sonlar bir nechta bo'lsa, ularni
+        kartej ko'rinishida qaytaradi.
+        """
+        if a > b:
+            if a > c:
+                return 1
+            elif a < c:
+                return 3
+            else:
+                return (1, 3)
+        elif a < b:
+            if b > c:
+                return 2
+            elif b < c:
+                return 3
+            else:
+                return (2, 3)
+        else:
+            if a > c:
+                return (1, 2)
+            elif a < c:
+                return 3
+            else:
+                return (1, 2, 3)
+
     def kabisa_yili(self, yil: int) -> bool:
         """
         Bu algoritm 'yil' parametri kabisa yili bo'lsa True, aks holda False
@@ -60,6 +90,7 @@ class Algorithm:
                 #print(p)
                 rel.append(p)
         return rel
+
 
 class Solution(Algorithm):
 
@@ -276,8 +307,67 @@ class Solution(Algorithm):
         print(natija)
         
 
+class Olimpiada_20_04_2024(Algorithm):
+
+    def A(self):
+        
+        # Algorithm | Algoritm
+        # Function | Funksiya
+        def F(a, b, c) -> str:
+            res = ""
+            my_map = {
+                1: "Ali",
+                2: "Vali",
+                3: "G'ani"
+            }
+            katta = self.uchta_son_kattasi(a, b, c)
+            if type(katta) == tuple:
+                for i in katta:
+                    res += my_map[i] + "\n"
+            else:
+                return my_map[katta]
+            return res[:-1]
+            
+
+        # Input | Kirish
+        n = int(input())
+        ali = set()
+        vali = set()
+        gani = set()
+        for i in range(n):
+            nums = input().split()
+            ali.add(int(nums[0]))
+            vali.add(int(nums[1]))
+            gani.add(int(nums[2]))
+
+        a = len(ali)
+        b = len(vali)
+        c = len(gani)
+
+        # Processing | Ishlov Berish
+        natija = F(a, b, c)
+
+        # Output | Chiqish
+        print(natija)
+        
+
+
+    def B():
+        
+        def F(s: str):
+           pass
+        
+        # Input | Kirish
+        s = input()
+        
+        # Processing | Ishlov Berish
+        natija = F(s)
+
+        # Output | Chiqish
+        print(natija)
+
 
 if __name__ == "__main__":
-
-    solution = Solution()
-    solution.F12()
+    
+    olimpiada = Olimpiada_20_04_2024()
+    olimpiada.A()
