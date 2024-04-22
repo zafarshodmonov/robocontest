@@ -1,7 +1,7 @@
-from algorithm import Algorithm
+import math
 
 
-class Contest_20_04_2024(Algorithm):
+class Contest_20_04_2024():
 
     def A(self):
         
@@ -60,3 +60,63 @@ class Contest_20_04_2024(Algorithm):
         # Output | Chiqish
         print(natija)
 
+
+class Contest_21_04_2024():
+    
+    @staticmethod
+    def A():
+        
+        # Function | Funksiya
+        # Algorithm | Algoritm
+        def F(n: int):
+            if n == 0:
+                return "3"
+            e = '271828182845904523536028750'
+            res = e[:n + 1]
+            tekshiriladigan_raqam = int(e[n + 1])
+            if tekshiriladigan_raqam >= 5:
+                res = str(int(res) + 1)
+            else:
+                pass
+            return "2." + res[1:]
+
+        # Input | Kirish
+        n = int(input())
+
+        # Processing | Ishlov Berish
+        result = F(n)
+
+        # Output | Chiqish
+        print(result)
+
+    @staticmethod
+    def B():
+
+        def F(n):
+            if n % 7 == 0:
+                return "Yes"
+            else:
+                return "No"
+        
+        # Input | Kirish
+        n = int(input())
+        nums = []
+        for _ in range(n):
+            nums.append(int(input(), 2))
+
+        # Processing | Ishlov Berish
+        nums = list(map(F, nums))
+
+        # Output | Chiqish
+        for i in nums:
+            print(i)
+
+        
+def main():
+    contest = Contest_21_04_2024()
+    contest.B()
+
+
+if __name__ == "__main__":
+    main()
+    

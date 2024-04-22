@@ -255,3 +255,12 @@ class Solution(Algorithm):
         # Output
         print(natija)
 
+
+def main():
+    solution = Solution()
+    solution.F14()
+
+
+if __name__ == "__main__":
+    main()
+    
