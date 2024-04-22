@@ -1,3 +1,5 @@
+import math
+
 class Algorithm:
 
     def uchta_son_kattasi(self, a, b, c) -> int | tuple:
