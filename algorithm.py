@@ -1,5 +1,6 @@
 import math
 
+
 class Algorithm:
 
     def uchta_son_kattasi(self, a, b, c) -> int | tuple:
@@ -89,3 +90,22 @@ class Algorithm:
                 rel.append(p)
         return rel
 
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        def backtrack(nums, path): 
+            if not nums: 
+                result.append(path) 
+                return 
+            for i in range(len(nums)): 
+                backtrack(nums[:i] + nums[i+1:], path + [nums[i]]) 
+        result = [] 
+        backtrack(nums, []) 
+        return result 
+    
+def main():
+    algorithm = Algorithm()
+    result = algorithm.permute(list(range(1, 12)))
+    print(result)
+
+
+if __name__ == "__main__":
+    main()

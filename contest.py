@@ -44,8 +44,6 @@ class Contest_20_04_2024():
         # Output | Chiqish
         print(natija)
         
-
-
     def B():
         
         def F(s: str):
@@ -60,6 +58,51 @@ class Contest_20_04_2024():
         # Output | Chiqish
         print(natija)
 
+    @staticmethod
+    def E():
+
+        def F(ulkan: str) -> str:
+            ulkan_uzunlik = len(ulkan)
+            stop = ulkan_uzunlik if (ulkan_uzunlik <= 9) else (9 + ((ulkan_uzunlik - 9) // 2))
+            sonlar = set(range(1, stop + 1))
+            rel = []
+            ulkan += "00"
+
+            def Bk(index, stack, sonlar):
+                if not sonlar:
+                    rel.append(" ".join(list(map(str, stack))))
+                    return
+                chap = int(ulkan[index])  
+                ong = int(ulkan[index : index + 2])
+                if (0 < chap < 10) and (chap in sonlar):
+                    #print("chap: ", chap) 
+                    stack.append(chap)
+                    sonlar.remove(chap)
+                    Bk(index + 1, stack, sonlar)
+                
+                if (9 < ong <= stop) and (ong in sonlar):
+                    
+                    #print("ong: ", ong)
+                    stack.append(ong)
+                    sonlar.remove(ong)
+                    Bk(index + 2, stack, sonlar)
+                return
+            
+            Bk(0, [], sonlar)
+            
+
+             
+            return rel
+
+        # Input | Kirish
+        ulkan = input() # "4111109876532"
+        
+
+        # Processing | Ishlov Berish
+        permutatsiya = F(ulkan)
+
+        # Output
+        print(permutatsiya)
 
 class Contest_21_04_2024():
     
@@ -113,8 +156,8 @@ class Contest_21_04_2024():
 
         
 def main():
-    contest = Contest_21_04_2024()
-    contest.B()
+    contest = Contest_20_04_2024()
+    contest.E()
 
 
 if __name__ == "__main__":
