@@ -3,6 +3,76 @@ import math
 
 class Solution():
 
+    def toldiruvchi(self, N: str) -> list[int]:
+        
+        n_str = N.rjust(12, "0")
+        nums = list(map(int, list(n_str)))
+        return nums
+    
+    def SieveOfEratosthenes(self, n):
+
+        prime = [True for i in range(n+1)]
+        p = 2
+        while (p * p <= n):
+
+            if (prime[p] == True):
+
+                for i in range(p * p, n+1, p):
+                    prime[i] = False
+            p += 1
+
+        rel = []
+        for p in range(2, n+1):
+            if prime[p]:
+                #print(p)
+                rel.append(p)
+        return rel
+
+    def kabisa_yili(self, yil: int) -> bool:
+        """
+        Bu algoritm 'yil' parametri kabisa yili bo'lsa True, aks holda False
+        qaytaradi.
+
+        Parametr:
+            yil: int 
+
+        Return:
+            bool
+        """
+
+        if yil % 400 == 0:
+            return True
+        else:
+            if yil % 4 == 0 and yil % 100 != 0:
+                return True
+            else:
+                return False
+
+    def count_divisors_optimized(self, n):
+        divisor_count = 0
+        sqrt_n = math.isqrt(n)
+        for i in range(1, sqrt_n + 1):
+            if n % i == 0:
+                divisor_count += 2  # We count both i and n/i
+        # If n is a perfect square, we've counted sqrt_n only once.
+        if sqrt_n * sqrt_n == n:
+            divisor_count -= 1
+        return divisor_count
+
+    def permute(self, nums):
+        ans = []
+        def B(path):
+            if len(path) == len(nums):
+                ans.append(path[:])
+                return 
+            for num in nums:
+                if num not in path:
+                    path.append(num)
+                    B(path)
+                    path.pop()
+        B([])
+        return ans
+    
     @staticmethod    
     def F1():
 
@@ -69,17 +139,6 @@ class Solution():
         # Output
         print(natija)
 
-    def count_divisors_optimized(self, n):
-        divisor_count = 0
-        sqrt_n = math.isqrt(n)
-        for i in range(1, sqrt_n + 1):
-            if n % i == 0:
-                divisor_count += 2  # We count both i and n/i
-        # If n is a perfect square, we've counted sqrt_n only once.
-        if sqrt_n * sqrt_n == n:
-            divisor_count -= 1
-        return divisor_count
-
     def F5(self):
 
         def F(z: int):
@@ -97,26 +156,6 @@ class Solution():
         z = int(input())
         natija = F(z)
         print(natija)
-
-    def kabisa_yili(self, yil: int) -> bool:
-        """
-        Bu algoritm 'yil' parametri kabisa yili bo'lsa True, aks holda False
-        qaytaradi.
-
-        Parametr:
-            yil: int 
-
-        Return:
-            bool
-        """
-
-        if yil % 400 == 0:
-            return True
-        else:
-            if yil % 4 == 0 and yil % 100 != 0:
-                return True
-            else:
-                return False
 
     def F6(self):
         
@@ -136,6 +175,7 @@ class Solution():
         natija = F(yil)
         print(natija)
 
+    @staticmethod
     def F7():
         pass
 
@@ -225,25 +265,6 @@ class Solution():
         # Output | Chiqish
         print(natija)
 
-    def SieveOfEratosthenes(self, n):
-
-        prime = [True for i in range(n+1)]
-        p = 2
-        while (p * p <= n):
-
-            if (prime[p] == True):
-
-                for i in range(p * p, n+1, p):
-                    prime[i] = False
-            p += 1
-
-        rel = []
-        for p in range(2, n+1):
-            if prime[p]:
-                #print(p)
-                rel.append(p)
-        return rel
-
     def F12(self):
 
         # Algorithm | Algoritm
@@ -304,12 +325,25 @@ class Solution():
         # Output
         print(natija)
 
-    def toldiruvchi(self, N: str) -> list[int]:
+    @staticmethod
+    def F15():
         
-        n_str = N.rjust(12, "0")
-        nums = list(map(int, list(n_str)))
-        return nums
+        # Function | Funksiya
+        def F(N, K):
+            mod = 1_000_000_007
+            if N == 0:
+                return 0
+            return (pow(K, N, mod) - 1) * pow((K - 1), mod - 2, mod) % mod
     
+        # Input | Kirish
+        N, K = tuple(map(int, input().split()))
+        
+        # Processing | Ishlov Berish
+        natija = F(N, K)
+
+        # Output
+        print(natija)
+
     def F16(self):
 
         # Function
@@ -368,11 +402,81 @@ class Solution():
 
         # Output
         print(F(nums))
+
+    def F18(self):
+
+        def is_sehr(M: list[int]):
+            if (M[0] + M[1] + M[2] == 15) and (M[3] + M[4] + M[5] == 15) \
+                and (M[6] + M[7] + M[8] == 15) and (M[0] + M[3] + M[6] == 15) \
+                and (M[1] + M[4] + M[7] == 15) and (M[2] + M[5] + M[8] == 15) \
+                and (M[0] + M[4] + M[8] == 15) and (M[2] + M[4] + M[6] == 15):
+                return True
+            return False
+        
+        def inp():
+            rel = []
+            for i in range(3):
+                nums = list(map(int, input().split()))
+                rel = rel + nums
+            return rel
+
+        A = inp()
+        def tek(A, B):
+            s = 0
+            for i in range(len(B)):
+                s += abs(A[i] - B[i])
+            return s
+        
+        #T1 = list(filter(is_sehr, self.permute(list(range(1,10)))))
+        T = [
+            [2, 7, 6, 9, 5, 1, 4, 3, 8], 
+            [2, 9, 4, 7, 5, 3, 6, 1, 8], 
+            [4, 3, 8, 9, 5, 1, 2, 7, 6], 
+            [4, 9, 2, 3, 5, 7, 8, 1, 6], 
+            [6, 1, 8, 7, 5, 3, 2, 9, 4], 
+            [6, 7, 2, 1, 5, 9, 8, 3, 4], 
+            [8, 1, 6, 3, 5, 7, 4, 9, 2], 
+            [8, 3, 4, 1, 5, 9, 6, 7, 2]]
+        
+        result = min([tek(A, i) for i in T])
+        print(result)
+
+    @staticmethod
+    def F19():
+
+        # Algorithm
+        def F(N, K):
+            return K // N
+            
+        # Input
+        N, K = tuple(map(int, input().split()))
+
+        # Processing
+        result = F(N, K)
+
+        # Output
+        print(result)
+
+    @staticmethod
+    def F20():
+
+        # Algorithm
+        def F(N, K):
+            return K % N
+            
+        # Input
+        N, K = tuple(map(int, input().split()))
+
+        # Processing
+        result = F(N, K)
+
+        # Output
+        print(result)
         
 
 def main():
     solution = Solution()
-    solution.F16()
+    solution.F18()
 
 
 if __name__ == "__main__":

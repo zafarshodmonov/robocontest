@@ -154,9 +154,79 @@ class Contest_21_04_2024():
         for i in nums:
             print(i)
 
+class Contest_30_04_2024():
+
+    @staticmethod
+    def D():
+
+        def F(nums):
+
+            summa = 0
+            m = 0
+            rel = []
+            element = []
+
+            for i in range(3):
+                for j in range(3):
+                    e = nums[i][j]
+                    if m == e:
+                        rel.append((i, j))
+                        element.append(e)
+                    elif m < e:
+                        if element:
+                            while element[-1] == m:
+                                element.pop()
+                                rel.pop()
+                                if not element:
+                                    break
+                            
+                        else:
+                            pass
+                        element.append(e)
+                        rel.append((i, j))
+                        m = e
+                        
+                    else:
+                        pass
+                    summa += e
+            return summa, rel
+
+        # Input
+        nums = []
+        for _ in range(3):
+            nums.append(list(map(int, input().split())))
         
+        # Processing
+        natija = F(nums)
+
+        # Output
+        print(natija[0])
+        for i in natija[1]:
+            print(f"{i[0]} {i[1]}")
+
+    @staticmethod
+    def E():
+
+        # Algorithm
+        def F(ism):
+            res = ""
+            for i in range(len(ism)):
+                res += ism[i:]
+                res = res if (i == len(ism) - 1) else res + "\n"
+            return res
+
+        # Input
+        ism = input()
+
+        # Processing
+        result = F(ism)
+
+        # Output
+        print(result)
+
+
 def main():
-    contest = Contest_20_04_2024()
+    contest = Contest_30_04_2024()
     contest.E()
 
 
