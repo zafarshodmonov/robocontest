@@ -73,17 +73,16 @@ class Solution():
         B([])
         return ans
     
-    @staticmethod    
-    def F1():
-
-        def F(a, b):
-            return a + b
+    def F1_(self, a, b):
+        return a + b 
+    
+    def F1(self):
         
         # Input
         a, b = tuple(map(int, input().split()))
 
-        # Funksiya
-        natija = F(a, b)
+        # Processing
+        natija = self.F1_(a, b)
 
         # Output
         print(natija)
@@ -441,18 +440,16 @@ class Solution():
         result = min([tek(A, i) for i in T])
         print(result)
 
-    @staticmethod
-    def F19():
+    def F19_(self, N, K):
+        return K // N
+    
+    def F19(self):
 
-        # Algorithm
-        def F(N, K):
-            return K // N
-            
         # Input
         N, K = tuple(map(int, input().split()))
 
         # Processing
-        result = F(N, K)
+        result = self.F19_(N, K)
 
         # Output
         print(result)
@@ -472,11 +469,25 @@ class Solution():
 
         # Output
         print(result)
+
+    def ozod_uchun(self):
+        def is_sehr(M: list) -> bool:
+            if (M[0] + M[1] + M[2] == 14) and (M[1] + M[3] + M[4] == 5) \
+                and (M[2] + M[4] + M[5] == 7) and (M[3] + M[6] + M[7] == 13) \
+                and (M[4] + M[7] + M[8] == 15) and (M[5] + M[8] + M[9] == 17):
+                return True
+            return False
+        A = self.permute(list(range(10)))
+        #T = list(filter(is_sehr, A))
+        print("Boshlash")
+        for i in A:
+            print(i)
+        print("Tamom")
         
 
 def main():
     solution = Solution()
-    solution.F18()
+    solution.F21()
 
 
 if __name__ == "__main__":
