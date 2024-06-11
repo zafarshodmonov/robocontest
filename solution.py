@@ -73,7 +73,7 @@ class Solution():
         B([])
         return ans
     
-    def F1_(self, a, b):
+    def F1_processing(self, a, b):
         return a + b 
     
     def F1(self):
@@ -82,7 +82,7 @@ class Solution():
         a, b = tuple(map(int, input().split()))
 
         # Processing
-        natija = self.F1_(a, b)
+        natija = self.F1_processing(a, b)
 
         # Output
         print(natija)
@@ -487,7 +487,7 @@ class Solution():
 
 def main():
     solution = Solution()
-    solution.F21()
+    solution.F1()
 
 
 if __name__ == "__main__":
