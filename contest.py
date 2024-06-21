@@ -1,5 +1,6 @@
 import math
 
+
 # pythonDataStructure.py
 # ==== Begin ====
 class Stack:
@@ -186,6 +187,7 @@ class Contest_20_04_2024():
         # Output
         print(permutatsiya)
 
+
 class Contest_21_04_2024():
     
     @staticmethod
@@ -235,6 +237,7 @@ class Contest_21_04_2024():
         # Output | Chiqish
         for i in nums:
             print(i)
+
 
 class Contest_30_04_2024():
 
@@ -306,6 +309,7 @@ class Contest_30_04_2024():
         # Output
         print(result)
 
+
 class Contest_10_06_2024():
 
     def A():
@@ -324,9 +328,70 @@ class Contest_10_06_2024():
         pass
 
 
+class Contest_20_06_2024:
+
+    def A(self):
+
+        n = int(input())
+        ans = 2 * n - 1
+        print(ans)
+
+    def B(self):
+
+        A = int(input())
+        B = int(input())
+        C = int(input())
+
+        zasum = sum([A, B, C])
+        zamax = max(A, B, C)
+        
+        print(3 * zamax - zasum)
+
+    def C(self):
+
+        n = int(input())
+
+        snake = ""
+        camel = ""
+        for i in range(n):
+            word = input()
+            if i == 0:
+                snake += word
+                camel += word
+            else:
+                snake += "_" + word
+                camel += word.title()
+        print(snake)
+        print(camel)
+
+    def D(self):
+
+        n = int(input())
+
+        a = {i + 1: e for i, e in enumerate(map(int, input().split()))}
+        t = {i + 1: e for i, e in enumerate(map(int, input().split()))}
+        d = {i: 0 for i in range(n)}
+
+        for i in range(n):
+            for sh, e in t.items():
+                if (i + e) in a:
+
+                    if a[i + e] == sh:
+
+                        d[i] += 1
+                        
+        for i in range(n):
+            if i == (n - 1):
+                print(d[i], end="")
+                break
+            print(d[i], end=" ")
+
+
+
+
 def main():
-    contest = Contest_10_06_2024()
-    contest.A()
+    contest = Contest_20_06_2024()
+    contest.D()
 
 
 if __name__ == "__main__":
